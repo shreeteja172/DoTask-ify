@@ -1,0 +1,17 @@
+{
+  "name": "todo-be",
+  "version": "1.0.0",
+  "description": "todo app with data",
+  "license": "ISC",
+  "author": "shreeteja172",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.25.67"
+  }
+}
