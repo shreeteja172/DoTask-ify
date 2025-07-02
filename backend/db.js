@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
-const { boolean } = require('zod');
 require('dotenv').config();
-
-mongoose.connect('process.env.MONGODB_URL')
-// .env 
+mongoose.connect(process.env.MONGODB_URL) 
 
 const todoSchema = new mongoose.Schema({
     title: String,
     description: String,
     completed: {
-        type: boolean,
+        type: Boolean,
         default: false
     }
 });
 
-const todo = mongoose.model('todo',todoSchema)
+const Todo = mongoose.model('Todo', todoSchema); 
 
 module.exports = {
-    
-}
+    Todo
+};
