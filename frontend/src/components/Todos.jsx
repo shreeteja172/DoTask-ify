@@ -1,6 +1,26 @@
 import React from 'react'
 
 const Todos = ({todos}) => {
+
+    const onToggleComplete = async (id) => {
+        try {
+            const response = await fetch('http://localhost:3000/completed', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to mark todo as completed');
+            }
+            const data = await response.json();
+            console.log(data.message);
+        }
+        catch (error) {
+            console.error("Error updating todo:", error);
+        }
+    }
     return (
         <div className="max-w-4xl mx-auto p-6 space-y-6">
             {todos.map(function (todo) {
@@ -12,6 +32,9 @@ const Todos = ({todos}) => {
                         <h1 className="text-2xl font-bold text-gray-800 mb-3">{todo.title}</h1>
                         <p className="text-gray-600 mb-5 leading-relaxed">{todo.description}</p>
                         <button 
+                            onClick={() => {
+                                onToggleComplete(todo._id);
+                            }}
                             className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
                                 todo.completed 
                                     ? 'bg-emerald-500 text-white cursor-default focus:ring-emerald-300' 
