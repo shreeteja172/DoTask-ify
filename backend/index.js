@@ -1,7 +1,8 @@
 const express = require("express");
-const { todo } = require('./db')
+const { Todo } = require('./db')
 const app = express();
 const cors = require("cors")
+
 
 const { createTodo, updateTodo } = require("./types");
 
