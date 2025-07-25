@@ -4,7 +4,8 @@ const Todos = ({todos}) => {
 
     const onToggleComplete = async (id) => {
         try {
-            const response = await fetch('http://localhost:3000/completed', {
+            // const response = await fetch('http://localhost:3000/completed', {
+            const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/completed', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
